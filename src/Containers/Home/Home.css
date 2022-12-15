@@ -1,0 +1,13 @@
+.homewrapper{
+    display: flex;
+    width: 100%;
+}
+.left-menu{
+    width: 15% !important;
+    background-color: red !important;
+}
+
+.center-main{
+    padding: 0 80px;
+    width: 85%;
+}
