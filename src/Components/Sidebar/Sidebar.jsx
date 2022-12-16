@@ -41,9 +41,6 @@ function Sidebar() {
     if (collapsed==true){
         logo.style.display='none'
     }
-   
-    
-
     const {
         token: { colorBgContainer },
     } = theme.useToken();

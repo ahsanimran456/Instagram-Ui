@@ -56,7 +56,7 @@ function RightContent() {
                 </div>
                 <div className="activename">
                     <div>
-                        <span style={{ fontSize: '15px', fontWeight: 600 }}>UmairManzor</span>
+                        <span style={{ fontSize: '15px', fontWeight: 600 }}>Umair</span>
                     </div>
                     <div>
                         <span style={{ fontSize: '14px', color: 'Gray', fontStyle: 'italic' }}>

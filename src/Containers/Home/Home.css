@@ -4,10 +4,36 @@
 }
 .left-menu{
     width: 15% !important;
-    background-color: red !important;
+    position: fixed;
+    border-right: 1.5px solid #94909038;
 }
 
 .center-main{
-    padding: 0 80px;
+    padding: 0 150px;
     width: 85%;
+    margin-left: auto;
+    background-color: #FAFAFA;
+}
+
+@media screen and (max-width:768px) {
+    .left-menu{
+        display: none;
+    }
+    .center-main{
+        padding: unset !important;
+        width: 100%;
+      
+    }
+
+}
+@media screen and (max-width:950px) {
+    .center-main{
+        padding: 0 100px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .sectionwrapper{
+        padding: 0 !important;
+    }
 }
