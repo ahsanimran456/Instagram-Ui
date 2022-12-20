@@ -11,10 +11,31 @@ import {
     provider_google,
     getAuth,
     GoogleAuthProvider,
+    doc, setDoc,
+    db,onAuthStateChanged 
+    
 } from '../../FirebaseConfig/FIrebase'
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react'
+
 
 function Login() {
+
     const [passwordVisible, setPasswordVisible] = React.useState(false);
+     const navigate = useNavigate()
+     useEffect(() => {
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("user",user);
+                navigate('/home')
+            } else {
+                console.log("no user found");
+
+            }
+        });
+    }, [])
+    
     const login_with_google = () => {
         const auth = getAuth();
         signInWithPopup(auth, provider_google)
@@ -23,6 +44,13 @@ function Login() {
                 const token = credential.accessToken;
                 const user = result.user;
                 console.log("user login >>>>>>" ,user)
+                setDoc(doc(db, "users", user.uid), {
+                    name: user.displayName,
+                    uid:user.uid,
+                    email:user.email,
+                    profile:user.photoURL,
+                  });
+                navigate('/home')
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -73,9 +101,9 @@ function Login() {
                             </div>
                         </div>
                         <div className="log-with">
-                            <div className="login-fb">
+                            {/* <div className="login-fb">
                                 <FacebookIcon color='primary' /> <p >Login with Facebook</p>
-                            </div>
+                            </div> */}
                             <div className="login-google">
                                 <GoogleIcon style={{ color: '#34A853' }} /> <p onClick={login_with_google}>Login with Google</p>
                             </div>

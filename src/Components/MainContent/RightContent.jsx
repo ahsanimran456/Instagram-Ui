@@ -2,7 +2,7 @@ import './Main.css'
 import active from '../../Assets/Images/activeimage.jpg'
 import boy from '../../Assets/Images/avatar.png'
 import { fontStyle, fontWeight } from '@mui/system';
-function RightContent() {
+function RightContent(props) {
     return (
         <div className="rightcontent-wrapper">
             <div className="activeuser">
@@ -11,11 +11,11 @@ function RightContent() {
                 </div>
                 <div className="activename">
                     <div>
-                        <span style={{ fontSize: '15px', fontWeight: 600 }}>ahsanImran</span>
+                        <span style={{ fontSize: '15px', fontWeight: 600 }}>{props.profileName}</span>
                     </div>
                     <div>
                         <span style={{ fontSize: '14px', color: 'Gray', fontStyle: 'italic' }}>
-                            Ahsan imran
+                            {props.profileName}
                         </span>
                     </div>
                 </div>

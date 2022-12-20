@@ -8,6 +8,21 @@ import {
     onAuthStateChanged
 } from "firebase/auth";
 
+import { 
+    setDoc ,
+    getFirestore,
+    doc,
+    getDocs,
+    getDoc,
+    collection,
+    onSnapshot,
+    addDoc, 
+     updateDoc,
+      deleteField
+
+}
+ from "firebase/firestore"; 
+
 const firebaseConfig = {
     apiKey: "AIzaSyA4THl9lg7P1lzpCLMa6y85XZAPcKU2Xjw",
     authDomain: "instagram-1d4ac.firebaseapp.com",
@@ -22,6 +37,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider_google = new GoogleAuthProvider();
+const db = getFirestore(app)
 
-
-export { provider_google, getAuth, signInWithPopup, GoogleAuthProvider,  onAuthStateChanged }
+export { 
+    provider_google, getAuth, signInWithPopup, GoogleAuthProvider,  onAuthStateChanged ,
+    doc, setDoc,db,
+    getDocs,
+    getDoc,
+    collection,
+  
+}

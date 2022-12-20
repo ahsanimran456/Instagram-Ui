@@ -3,7 +3,7 @@ import MainBody from "./MainBody";
 import RightContent from "./RightContent";
 import SmallScreenHeader from "./MainHeader-SC";
 import FooterSm from "./Footer-sm";
-function MainContent() {
+function MainContent(props) {
     return (
         <div className="sectionwrapper">
             <div className="container sectionwrapper">
@@ -14,7 +14,7 @@ function MainContent() {
                 <FooterSm/>
             </div>
             <div className="rightdata">
-                <RightContent/>
+                <RightContent profileName={props.profileName} />
             </div>
             </div>
         </div>
