@@ -18,8 +18,8 @@ import {
     onSnapshot,
     addDoc, 
      updateDoc,
-      deleteField
-
+      deleteField,
+      query,where
 }
  from "firebase/firestore"; 
 
@@ -45,5 +45,5 @@ export {
     getDocs,
     getDoc,
     collection,
-  
-}
+    onSnapshot,
+    query,where}

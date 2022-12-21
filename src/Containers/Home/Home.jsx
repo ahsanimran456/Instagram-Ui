@@ -16,7 +16,10 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react'
 
 function Home() {
+
     const [activeUser,setActiveUser] = useState('')
+    const [userimg,Setuserimg] = useState('')
+
     const navigate = useNavigate()
     useEffect(() => {
        const auth = getAuth()
@@ -24,6 +27,9 @@ function Home() {
            if(user) {
             // console.log(user ,'firebase ')
             setActiveUser(user.displayName)
+            Setuserimg(user.photoURL)
+            
+
             console.log(activeUser)
            } 
            else if (!user) {
@@ -38,7 +44,9 @@ function Home() {
                     <Sidebar />
                 </div>
                 <div className="center-main">
-                    <MainContent profileName={activeUser} />
+                    <MainContent profileName={activeUser} 
+                    profileimg={userimg}
+                    />
                 </div>
 
             </div>

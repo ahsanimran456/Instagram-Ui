@@ -12,7 +12,7 @@ function Router() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(true);
-                console.log("user", user);
+                // console.log("user", user);
             } else {
                 setUser(false)
                 console.log("no user found");
