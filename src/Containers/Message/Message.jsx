@@ -18,20 +18,19 @@ import { useEffect, useState } from 'react'
 
 function Message(props) {
 
+    const auth = getAuth()
     const navigate = useNavigate()
     const [username, setusername] = useState("")
     const [userUid, setuserUid] = useState("")
     const [userEmail, setuserEmail] = useState("")
     const [allusers, Setalluser] = useState([])
-    const [updated, Setupdated] = useState([])
     useEffect(() => {
-        const auth = getAuth()
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // console.log("user", user);
                 setusername(user.displayName)
                 setuserUid(user.uid)
                 setuserEmail(user.email)
+                console.log(auth.currentUser.uid)
 
             } else {
                 console.log("no user found");
@@ -40,26 +39,24 @@ function Message(props) {
         });
     }, []);
     useEffect(() => {
-        const q = query(collection(db, "users"), where('uid', "!=", userUid));
+     
+        // const activeUser = auth.currentUser.uid;
+        const q = query(collection(db, "users"), where('uid', "!=",auth.currentUser.uid));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            console.log(querySnapshot)
-            // querySnapshot.forEach((doc) => {
-            //     Setalluser([doc.data()])
-                
-            //     // console.log(doc.data().email)
-            // });
+            const alluser = []
+            querySnapshot.forEach((doc) => {
+                alluser.push(doc.data())
+            });
+            Setalluser(alluser)
         });
     }, []);
-
-
-
-
 
     return (
         <div className="message-wrapper">
             <div className="left">
                 <Sidebar />
             </div>
+
             <div className="right">
                 <div className="container">
                     <div className="messagingArea">
@@ -73,7 +70,23 @@ function Message(props) {
                                 </div>
                             </div>
                             <div className="listof-allusers">
-                                <div className="eachuser">
+                                {allusers && allusers.map((values, i) => {
+                                    return (
+                                        <div className="eachuser">
+                                            <div className="imguser">
+                                                <img src={values.profile} alt="" />
+                                            </div>
+                                            <div className="name">
+                                                <p>
+                                                    {values.name}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                {console.log(allusers)}
+
+                                {/* <div className="eachuser">
                                     <div className="imguser">
                                         <img src={myimg} alt="" />
                                     </div>
@@ -82,12 +95,11 @@ function Message(props) {
                                             console.log(allusers)
 
                                         }
-                                        {/* {console.log(userUid)} */}
                                         <p>
                                             ahsan
                                         </p>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className="message-area">

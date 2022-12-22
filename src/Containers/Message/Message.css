@@ -93,4 +93,16 @@
 .message-area{
     width: 60%;
     border: 1px solid gray ;
+    /* border: 1px solid var(--firstColor) ; */
+
 }
+
+
+
+
+
+/* 
+:root{
+    --firstColor:#ddd
+
+} */
