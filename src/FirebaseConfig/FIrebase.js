@@ -19,7 +19,8 @@ import {
     addDoc, 
      updateDoc,
       deleteField,
-      query,where
+      query,where, 
+      orderBy
 }
  from "firebase/firestore"; 
 
@@ -46,4 +47,8 @@ export {
     getDoc,
     collection,
     onSnapshot,
-    query,where}
+    query,where,
+     addDoc ,
+     orderBy
+}
+
