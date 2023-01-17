@@ -2,7 +2,39 @@ import './Main.css'
 import active from '../../Assets/Images/activeimage.jpg'
 import boy from '../../Assets/Images/avatar.png'
 import { fontStyle, fontWeight } from '@mui/system';
+import { useState } from 'react';
+import {
+    getAuth,
+    doc,
+    setDoc,
+    db,
+    onAuthStateChanged,
+    getDocs,
+    getDoc,
+    collection, auth,
+    onSnapshot,
+    query, where,
+    addDoc,
+    orderBy,
+    signOut
+} from '../../FirebaseConfig/FIrebase'
+import { useNavigate } from "react-router-dom";
+
 function RightContent(props) {
+    const navigate = useNavigate()
+
+    const [logout, setlogout] = useState(false)
+    const log = () => {
+        setlogout(!logout)
+    }
+    const logOut = () => {
+        const auth = getAuth()
+        signOut(auth).then(() => {
+            navigate('/')
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
     return (
         <div className="rightcontent-wrapper">
             <div className="activeuser">
@@ -20,9 +52,15 @@ function RightContent(props) {
                     </div>
                 </div>
                 <div className="switch">
-                    <span>
+                    <span onClick={log}>
                         Switch
                     </span>
+                    {logout &&
+                        <div className='logout'>
+                            <div onClick={logOut}>
+                                <p>Logout</p>
+                            </div>
+                        </div>}
                 </div>
             </div>
             <div className="recomended">
@@ -80,7 +118,7 @@ function RightContent(props) {
                     </div>
                     <div>
                         <span style={{ fontSize: '14px', color: 'Gray', fontStyle: 'italic' }}>
-                                Sadiq Shah
+                            Sadiq Shah
                         </span>
                     </div>
                 </div>

@@ -91,7 +91,9 @@
     display: flex;
     flex-direction: column;
 }
-
+.switch{
+    position: relative;
+}
 .switch span {
     cursor: pointer;
     color: #7EC8F8;
@@ -102,6 +104,24 @@
 .switch span:hover {
     color: #44acf1;
 
+}
+
+.logout{
+    position: absolute;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 53%;
+    border-radius: 7px;
+}
+.logout p {
+    margin: unset;
+}
+.logout:hover{
+    cursor: pointer;
 }
 
 .recomended {

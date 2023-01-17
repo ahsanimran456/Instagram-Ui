@@ -5,7 +5,8 @@ import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 } from "firebase/auth";
 
 import { 
@@ -20,7 +21,8 @@ import {
      updateDoc,
       deleteField,
       query,where, 
-      orderBy
+      orderBy,
+
 }
  from "firebase/firestore"; 
 
@@ -49,6 +51,7 @@ export {
     onSnapshot,
     query,where,
      addDoc ,
-     orderBy
+     orderBy,
+     signOut
 }
 
